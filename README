@@ -1,0 +1,36 @@
+jQuery.ui.timepicker - a jQuery widget.
+Inspired by the jQuery DatePicker and the Google Calendar time picker.
+
+Pretty simple to use:
+
+- requires jQueryUI
+- Include the css and script in your html.
+- Include an <input> on your page and then use the following javascript:
+
+$("#startTime").timepicker();
+
+That should be it for a basic time picker. However, it can also integrate with other time pickers and the jQuery UI date picker:
+
+    <script type="text/javascript">
+        $(document).ready(function()
+        {
+			$("#startDate, #endDate").datepicker({ showAnim: "slide", showOptions: {direction: "up" }});
+			$("#startTime").timepicker({ showAnim: "slide", 
+				startHour: 0, 
+				numberHours: 24, 
+				intervalMinutes: 15});
+			$("#endTime").timepicker({ showAnim: "slide",
+				intervalMinutes: 15,
+				feedTime: $("#startTime"),
+				feedDate: $("#startDate"),
+				date: $("#endDate")});
+				
+			$("#startDate").datepicker("setDate", new Date());
+        });
+    </script>
+
+This should result in two date pickers and two time pickers. The second time picker #endTime is given the elements for the start date and time fields and its own end date field. What this means is that if there is an entry in the start time field it will start the selection of times in the end time picker from the curent start time selection (useful for forms which need from-to times, e.g. time sheets). It will also auto-fill the end date, taking in to account additional days if you go over midnight.
+
+Current Issues
+
+There are a shed-load so please go easy on me! The animation is especially messy and I don't think it will handle over 24 hour time blocks very well. If you're interested in doing some work on it then I'd be pleased to hear from you either via github or at jason@zenjiwebworks.com

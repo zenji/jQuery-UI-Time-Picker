@@ -1,0 +1,19 @@
+﻿.ui-timepicker
+{
+	width: 100px;
+	height: 150px;
+	overflow: auto;
+}
+
+.ui-timepicker ul
+{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.ui-timepicker li
+{
+	cursor: pointer;
+	white-space: nowrap;
+}
